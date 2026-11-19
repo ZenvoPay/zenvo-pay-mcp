@@ -1,0 +1,19 @@
+Zenvo MCP · Guia de integração
+
+Configure ZENVO_API_KEY no ambiente do cliente MCP. O conector envia a chave como Bearer à API. Use verificar_chave (GET /auth/verify) para identificar o ambiente. Em caso de HTTP 401, confira se a chave está completa e ativa.
+
+Catálogo
+listar_produtos usa GET /products. Envie external_id para pesquisar pelo SKU exato ou limit e after para paginar. Exemplo de argumentos: {"external_id":"camiseta-m"}.
+consultar_produto usa GET /products/{id}. Informe o UUID do produto.
+
+Links de pagamento
+consultar_link usa GET /payment-links/{id}. Informe o UUID do link para acompanhar o pagamento.
+Para habilitar criar_link (POST /payment-links), configure ZENVO_MCP_WRITE=1 e reinicie o cliente. Exemplo de argumentos:
+{"external_id":"pedido-123","product":{"external_id":"camiseta-m","quantity":1},"delivery":{"method":"none"}}
+Em caso de timeout, repita com a mesma referência e os mesmos dados.
+
+Vendas
+listar_vendas usa GET /sales. Os filtros disponíveis são link_id, status, since e until. Informe as datas com fuso horário. O início é inclusivo e o fim é exclusivo. Use limit (1 a 100) e after (UUID) para paginar.
+consultar_venda usa GET /sales/{id}. Informe o UUID da venda.
+
+O cliente pode ler este guia em zenvo://docs/api-publica mesmo antes de configurar a chave.
