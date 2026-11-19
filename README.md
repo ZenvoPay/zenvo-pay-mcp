@@ -4,15 +4,15 @@ Conecte o Claude Desktop, Cursor ou outro cliente MCP à sua conta Zenvo. O clie
 
 ## Instalar
 
-Com Node.js 20 ou superior, instale a versão 0.1.0:
+Com Node.js 20 ou superior, instale a versão 0.2.0:
 
 ```sh
-git clone --branch v0.1.0 --depth 1 https://github.com/kaikynetto/zenvo-pay-mcp.git
+git clone --branch v0.2.0 --depth 1 https://github.com/kaikynetto/zenvo-pay-mcp.git
 cd zenvo-pay-mcp
 npm ci --omit=dev
 ```
 
-Você também pode [baixar o ZIP da versão 0.1.0](https://github.com/kaikynetto/zenvo-pay-mcp/releases/download/v0.1.0/zenvo-mcp-0.1.0.zip), extrair a pasta e executar `npm ci --omit=dev` dentro dela.
+Você também pode [baixar o ZIP da versão 0.2.0](https://github.com/kaikynetto/zenvo-pay-mcp/releases/download/v0.2.0/zenvo-mcp-0.2.0.zip), extrair a pasta e executar `npm ci --omit=dev` dentro dela.
 
 ## Conectar
 
@@ -39,3 +39,20 @@ Por padrão, o servidor expõe verificar_chave, listar_produtos, consultar_produ
 ## Desenvolvimento
 
 Execute `npm ci` e `npm test`. O teste usa o cliente oficial e uma API local com dados fictícios. Ao preparar uma versão, atualize o contrato incluído no pacote e gere o ZIP com `python3 package-release.py /pasta/de/destino`.
+
+## HTTP remoto
+
+Execute `npm run start:http` para iniciar o endpoint de teste em `http://127.0.0.1:3333/mcp`. Para hospedagem própria, configure `MCP_PUBLIC_URL` com a origem HTTPS do seu domínio e encaminhe `/mcp` ao processo preservando o cabeçalho Host. HOST e PORT definem o endereço de escuta. No Cursor ou outro cliente que aceite cabeçalhos, configure a URL da sua instalação e a chave individual do usuário:
+
+```json
+{
+  "mcpServers": {
+    "zenvo": {
+      "url": "https://SEU-DOMINIO/mcp",
+      "headers": { "Authorization": "Bearer SUA_CHAVE_ZENVO" }
+    }
+  }
+}
+```
+
+Cada chamada à API usa a credencial recebida naquela requisição. O modo remoto requer um cliente com suporte a Bearer estático.

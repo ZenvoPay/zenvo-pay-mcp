@@ -1,13 +1,15 @@
 {
   "name": "zenvo-mcp",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node --test server.test.mjs"
+    "test": "node --test server.test.mjs",
+    "start:http": "node http.mjs"
   },
   "dependencies": {
+    "@modelcontextprotocol/node": "2.1.2",
     "@modelcontextprotocol/server": "2.4.0",
     "zod": "4.6.7"
   },
