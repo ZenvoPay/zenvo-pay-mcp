@@ -7,12 +7,12 @@ Conecte o Claude Desktop, Cursor ou outro cliente MCP à sua conta Zenvo. O clie
 Com Node.js 20 ou superior, instale a versão 0.2.0:
 
 ```sh
-git clone --branch v0.2.0 --depth 1 https://github.com/kaikynetto/zenvo-pay-mcp.git
+git clone --branch v0.2.0 --depth 1 https://github.com/ZenvoPay/zenvo-pay-mcp.git
 cd zenvo-pay-mcp
 npm ci --omit=dev
 ```
 
-Você também pode [baixar o ZIP da versão 0.2.0](https://github.com/kaikynetto/zenvo-pay-mcp/releases/download/v0.2.0/zenvo-mcp-0.2.0.zip), extrair a pasta e executar `npm ci --omit=dev` dentro dela.
+Você também pode [baixar o ZIP da versão 0.2.0](https://github.com/ZenvoPay/zenvo-pay-mcp/releases/download/v0.2.0/zenvo-mcp-0.2.0.zip), extrair a pasta e executar `npm ci --omit=dev` dentro dela.
 
 ## Conectar
 
